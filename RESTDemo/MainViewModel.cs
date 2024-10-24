@@ -78,5 +78,13 @@ namespace RESTDemo
 
                var response = await client.PutAsync(url, content);
            });
+
+        public ICommand DeleteUserCommand =>
+            new Command(async () =>
+            {
+                var url = $"{baseUrl}/users/10";
+
+                var response = await client.DeleteAsync(url);
+            });
     }
 }
