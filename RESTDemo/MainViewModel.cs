@@ -22,7 +22,7 @@ namespace RESTDemo
                 WriteIndented = true,
             };
         }
-        public ICommand AddUserCommand =>
+        public ICommand GetAllUsersCommand =>
             new Command(async () =>
             {
                 var url = $"{baseUrl}/users";
@@ -31,12 +31,17 @@ namespace RESTDemo
                 if (response.IsSuccessStatusCode)
                 {
                     //var content = await  response.Content.ReadAsStreamAsync();
-                    using(var responseStream = await response.Content.ReadAsStreamAsync())
+                    using (var responseStream = await response.Content.ReadAsStreamAsync())
                     {
                         var data = await JsonSerializer.DeserializeAsync<List<User>>(responseStream, _serializerOptions);
                     }
                 }
             });
-
+        public ICommand GetSingleUserCommand =>
+            new Command(async () =>
+            {
+                var url = $"{baseUrl}/users/25";
+                var response = await client.GetStringAsync(url);
+            });
     }
 }
