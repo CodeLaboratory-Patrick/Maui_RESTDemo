@@ -730,16 +730,47 @@ Below, I will describe some of the most common REST API status codes, their mean
   - Example: When the server is overloaded, it might return 503 Service Unavailable.
 
 ## Comparison Table of REST API Status Codes
-| Status Code | Category          | Description                                  | Use Case Example                       |
-|-------------|-------------------|----------------------------------------------|----------------------------------------|
-| 200 OK      | Success           | Request succeeded and contains response data| Fetching user details                  |
-| 201 Created | Success           | Request succeeded and created a resource    | Registering a new user                 |
-| 204 No Content | Success         | Request succeeded with no additional content| Deleting a user                        |
-| 400 Bad Request | Client Error   | Invalid request due to incorrect syntax     | Submitting a form with missing fields  |
-| 401 Unauthorized | Client Error  | Authentication required to access resource  | Accessing a protected API without a token |
-| 404 Not Found  | Client Error    | Requested resource could not be found       | Trying to access a non-existent endpoint |
-| 500 Internal Server Error | Server Error | Server encountered an unexpected issue   | Server-side script failure             |
-| 503 Service Unavailable | Server Error | Server temporarily overloaded or under maintenance | High traffic on the server           |
+## HTTP Status Codes Table
+| Status Code | Category          | Description                                                               |
+|-------------|-------------------|---------------------------------------------------------------------------|
+| **1xx**     | Informational     | Request received, continuing process.                                     |
+| **100**     | Continue          | The initial part of the request has been received and has not yet been rejected. |
+| **101**     | Switching Protocols | The requester has asked the server to switch protocols, and the server has agreed to do so. |
+| **102**     | Processing        | Server has received the request but has not yet completed it (WebDAV).    |
+| **2xx**     | Success           | The action was successfully received, understood, and accepted.           |
+| **200**     | OK                | The request has succeeded.                                                |
+| **201**     | Created           | The request has been fulfilled, resulting in the creation of a new resource. |
+| **202**     | Accepted          | The request has been accepted for processing, but the processing is not yet complete. |
+| **203**     | Non-Authoritative Information | The request has been successfully processed, but the information may come from a third-party source. |
+| **204**     | No Content        | The server successfully processed the request, but is not returning any content. |
+| **205**     | Reset Content     | The server successfully processed the request, and tells the user to reset the view. |
+| **206**     | Partial Content   | The server is delivering only part of the resource due to a range header sent by the client. |
+| **3xx**     | Redirection       | Further action needs to be taken to complete the request.                 |
+| **300**     | Multiple Choices  | There are multiple options for the resource that the client may follow.   |
+| **301**     | Moved Permanently | The requested resource has been assigned a new permanent URI.             |
+| **302**     | Found             | The requested resource resides temporarily under a different URI.         |
+| **303**     | See Other         | The response to the request can be found under another URI using a GET method. |
+| **304**     | Not Modified      | The requested resource has not been modified since the previous request.  |
+| **307**     | Temporary Redirect | The request should be repeated with another URI.                          |
+| **308**     | Permanent Redirect | This and all future requests should be directed to the given URI.         |
+| **4xx**     | Client Error      | The request contains bad syntax or cannot be fulfilled.                   |
+| **400**     | Bad Request       | The server could not understand the request due to invalid syntax.        |
+| **401**     | Unauthorized      | Authentication is required and has failed or has not yet been provided.   |
+| **403**     | Forbidden         | The client does not have permission to access the requested resource.     |
+| **404**     | Not Found         | The requested resource could not be found on the server.                  |
+| **405**     | Method Not Allowed | The request method is not supported for the requested resource.           |
+| **406**     | Not Acceptable    | The requested resource is capable of generating only content not acceptable according to the Accept headers sent in the request. |
+| **408**     | Request Timeout   | The server timed out waiting for the request.                             |
+| **409**     | Conflict          | The request could not be processed because of a conflict in the request, such as an edit conflict. |
+| **410**     | Gone              | The requested resource is no longer available and will not be available again. |
+| **429**     | Too Many Requests | The user has sent too many requests in a given amount of time.            |
+| **5xx**     | Server Error      | The server failed to fulfill an apparently valid request.                 |
+| **500**     | Internal Server Error | The server has encountered a situation it doesn't know how to handle.   |
+| **501**     | Not Implemented   | The server does not support the functionality required to fulfill the request. |
+| **502**     | Bad Gateway       | The server, while acting as a gateway or proxy, received an invalid response from the upstream server. |
+| **503**     | Service Unavailable | The server is currently unavailable (due to overload or maintenance).    |
+| **504**     | Gateway Timeout   | The server was acting as a gateway or proxy and did not receive a timely response from the upstream server. |
+| **505**     | HTTP Version Not Supported | The server does not support the HTTP protocol version used in the request. |
 
 ## When Should You Use REST API Status Codes?
 Status codes are crucial for maintaining effective communication between clients and servers. They provide important feedback that allows developers to handle different scenarios appropriately:
@@ -758,6 +789,7 @@ Status codes are crucial for maintaining effective communication between clients
 Here are some helpful resources for further reading:
 - [MDN Web Docs - HTTP Response Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 - [REST API Tutorial - HTTP Status Codes](https://restfulapi.net/http-status-codes/)
+- [RFC 2616 - Hypertext Transfer Protocol -- HTTP/1.1](https://datatracker.ietf.org/doc/html/rfc2616)
 
 ---
 # Summary of REST API Methods: GET, POST, PUT, DELETE
