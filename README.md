@@ -730,7 +730,6 @@ Below, I will describe some of the most common REST API status codes, their mean
   - Example: When the server is overloaded, it might return 503 Service Unavailable.
 
 ## Comparison Table of REST API Status Codes
-## HTTP Status Codes Table
 | Status Code | Category          | Description                                                               |
 |-------------|-------------------|---------------------------------------------------------------------------|
 | **1xx**     | Informational     | Request received, continuing process.                                     |
